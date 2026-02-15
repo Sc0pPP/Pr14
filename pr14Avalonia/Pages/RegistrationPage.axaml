@@ -1,0 +1,29 @@
+<nav:Page xmlns="https://github.com/avaloniaui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:nav="clr-namespace:WpfLikeAvaloniaNavigation;assembly=WpfLikeAvaloniaNavigation"
+          xmlns:pr14Avalonia="clr-namespace:pr14Avalonia"
+          mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+          x:Class="pr14Avalonia.Pages.RegistrationPage">
+    <Grid>
+        
+        <Button Content="Назад" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="Button_OnClick"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            
+            <TextBlock Text="Регистрация" FontSize="25" HorizontalAlignment="Center" Margin="0 0 0 20"/>
+            <TextBlock Text="Имя пользователя" Margin="10,0,10,0"/>
+            <TextBox x:Name="UserName" Height="35" Margin="10" />
+            <TextBlock Text="Пароль" Margin="10,0,10,0"/>
+            <TextBox x:Name="UserPassword" PasswordChar="*" Height="35" Margin="10"/>
+
+            <TextBlock Text="Повторите пароль" Margin="10,0,10,0"/>
+            <TextBox x:Name="PasswordProv" PasswordChar="*" Height="35" Margin="10"/>
+
+            <Button Content="Зарегистрироваться" Height="40" Margin="0 0 0 10" Click="Button_Click"/>
+
+            <TextBlock HorizontalAlignment="Center">
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</nav:Page>

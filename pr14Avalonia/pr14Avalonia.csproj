@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.3.11" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.11" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.11" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.11" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.3.11">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="MessageBox.Avalonia" Version="3.3.1.1" />
+        <PackageReference Include="MessageBox.Avalonia-mainthread" Version="2.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.12">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
+        <PackageReference Include="WpfLikeAvaloniaNavigation" Version="1.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="MainWindow.axaml.cs">
+        <DependentUpon>MainWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="bin\Debug\Images\1435ce908d94310dda5b9a90e473ff4e.jpg" />
+      <None Include="bin\Debug\Images\360e30e140c1fd399b74caefd184bc85.jpg" />
+      <None Include="bin\Debug\Images\55797462eaac2d70a1498c49ffcbf61f.jpg" />
+      <None Include="bin\Debug\Images\9531f8f54d636bdc766f64d92aa4d615.jpg" />
+      <None Include="bin\Debug\Images\c4bab99eaba4eb16b8115826dbb89196.jpg" />
+      <None Include="bin\Debug\Images\e63c9a3501590102e3a712a5b465f5a6.jpg" />
+      <None Include="bin\Debug\net9.0\Images\1435ce908d94310dda5b9a90e473ff4e.jpg" />
+      <None Include="bin\Debug\net9.0\Images\360e30e140c1fd399b74caefd184bc85.jpg" />
+      <None Include="bin\Debug\net9.0\Images\55797462eaac2d70a1498c49ffcbf61f.jpg" />
+      <None Include="bin\Debug\net9.0\Images\9531f8f54d636bdc766f64d92aa4d615.jpg" />
+      <None Include="bin\Debug\net9.0\Images\c4bab99eaba4eb16b8115826dbb89196.jpg" />
+      <None Include="bin\Debug\net9.0\Images\e63c9a3501590102e3a712a5b465f5a6.jpg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="bin\Debug\net9.0\" />
+    </ItemGroup>
+
+    
+</Project>

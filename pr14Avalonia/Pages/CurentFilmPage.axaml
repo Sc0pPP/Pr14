@@ -1,0 +1,77 @@
+<wpfLikeAvaloniaNavigation:Page
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pr14Avalonia="clr-namespace:pr14Avalonia"
+    xmlns:models="clr-namespace:pr14Avalonia.Models"
+    xmlns:wpfLikeAvaloniaNavigation="clr-namespace:WpfLikeAvaloniaNavigation;assembly=WpfLikeAvaloniaNavigation"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:DataType="models:Session"
+    x:Class="pr14Avalonia.Pages.CurentFilmPage">
+
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="1" Content="Назад" HorizontalAlignment="Right" Margin="10" Click="Button_OnClick"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <ListBox Grid.Row="2" x:Name="Produc"   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="10" x:DataType="models:Movie">
+                        <Image Source="{Binding Image}" Width="300" Height="375"/>
+
+                        <StackPanel Orientation="Vertical" x:Name="Produc" x:DataType="pr14Avalonia:AppState" Spacing="4">
+                            
+                            <TextBlock Text="{Binding CurrentMovie.MovieName}" Margin="30"/>
+                            <TextBlock Text="{Binding CurrentMovie.Rating}" Margin="30"/>
+                            <TextBlock Text="{Binding CurrentMovie.Description}" Margin="30"/>
+                            <TextBlock Text="{Binding CurrentMovie.AgeRating,StringFormat={}{0}+}" Margin="30"/>
+                        </StackPanel>
+                   
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+             
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox> 
+        
+        <ListBox x:Name="SessionSP" ScrollViewer.HorizontalScrollBarVisibility="Visible"  >
+        
+            <ListBox.ItemTemplate>
+         
+                <DataTemplate>
+                    <Border BorderBrush="black"
+                            BorderThickness="2" >
+                    <StackPanel  Orientation="Horizontal" Spacing="10" x:DataType="models:Session">
+                        <StackPanel Orientation="Vertical"  Spacing="4">
+                            <StackPanel Orientation="Vertical"    Spacing="4"  >
+                                <TextBlock Text="{Binding HallId,StringFormat={}{0}-Номер зала}" Margin="30"/>
+                                <TextBlock Text="{Binding StartDateTime,StringFormat={}{0}-Начало сеанса}" Margin="30"/>
+                                <TextBlock Text="{Binding BaseTicketPrice,StringFormat={}{0} руб.}" Margin="30"/>
+                                <Button Content="Выбрать билет" Click="ChooseSeans" Margin="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                        </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+             
+            
+        </ListBox> 
+            </StackPanel>
+    </Grid>
+</wpfLikeAvaloniaNavigation:Page>
+
+

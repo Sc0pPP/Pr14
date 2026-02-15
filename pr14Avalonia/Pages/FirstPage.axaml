@@ -1,0 +1,51 @@
+<nav:Page xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:nav="clr-namespace:WpfLikeAvaloniaNavigation;assembly=WpfLikeAvaloniaNavigation"
+             xmlns:pr14Avalonia="clr-namespace:pr14Avalonia"
+             xmlns:models="clr-namespace:pr14Avalonia.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="models:Movie"
+             x:Class="pr14Avalonia.Pages.FirstPage">
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Content="Назад" HorizontalAlignment="Right" Margin="10" Click="Button_OnClick"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <TextBox Width="250" x:Name="Search" Height="25" HorizontalAlignment="Left" TextChanged="TextBox_TextChanged"/>
+                <Button Content="Регистрация" Grid.Row="0" Width="107" Margin="5" Click="Button_Click"/>
+                <Button Content="Сортировка по рейтингу" FontSize="9" Grid.Row="0" Width="127" Margin="5" Click="Button_Click_2"/>
+                <Button Content="Сортировка по названию" FontSize="9" Grid.Row="0" Width="130" Margin="5" Click="Button_Click_3"/>
+                <Button Content="Личный кабинет" FontSize="10" Grid.Row="0" Width="" Margin="5" Click="Button_Click_1"/>
+                <Button Content="Войти" FontSize="10" Grid.Row="0" Width="" Margin="5" Click="Button_Click_4"/>
+            </StackPanel>
+            
+            <ListBox Grid.Row="2" x:Name="prod" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:Movie">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Image Source="{Binding Image}" Width="100" Height="125"/>
+
+                            <StackPanel Orientation="Vertical" Spacing="4">
+                                <TextBlock Text="{Binding MovieName}"/>
+                                <TextBlock Text="{Binding Rating}"/>
+                                <TextBlock Text="{Binding Description}"/>
+                                <TextBlock Text="{Binding AgeRating,StringFormat={}{0}+}"/>
+                                <Button Content="Подробнее" Click="Movie_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+             
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>  
+       </Grid>
+</nav:Page>
