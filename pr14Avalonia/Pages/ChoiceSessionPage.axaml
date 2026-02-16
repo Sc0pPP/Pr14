@@ -12,7 +12,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Content="Назад" HorizontalAlignment="Right" Margin="10" Click="Button_OnClick"/>
         <TextBlock Grid.Row="0" Text="Выбор Мест" HorizontalAlignment="Center" Margin="20"/>

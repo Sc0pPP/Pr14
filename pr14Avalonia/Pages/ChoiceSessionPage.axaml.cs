@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
+using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Microsoft.EntityFrameworkCore;
@@ -117,7 +119,7 @@ public partial class ChoiceSessionPage : Page
                 FinalPrice = AppState.ChoiceSession.BaseTicketPrice,
                 Status = status
             };
-
+            
             ChoosedTickets.Add(ticket);
         }
         else
@@ -157,20 +159,60 @@ public partial class ChoiceSessionPage : Page
     }
 
     private void Button_OnClick1(object? sender, RoutedEventArgs e)
-    {
-        foreach (Ticket tk in ChoosedTickets )
-        {
-            Core.Context.Tickets.Add(tk);
-            Core.Context.SaveChanges();
-            
-        }
-        var mainWindow = (Application.Current.ApplicationLifetime
-            as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
-        var dialogg= new SimpleWindow("Билеты приобретены,можете просмотреть их в личном кабинете");
-        dialogg.ShowDialog(mainWindow);
+    { 
+            foreach (Ticket tk in ChoosedTickets)
+            {
+                Core.Context.Tickets.Add(tk);
+                Core.Context.SaveChanges();
+
+            }
+
+            var mainWindow = (Application.Current.ApplicationLifetime
+                as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
+            var dialogg = new SimpleWindow("Билеты приобретены,можете просмотреть их в личном кабинете");
+            dialogg.ShowDialog(mainWindow);
+        
     }
    
+    private async Task<bool> ShowConfirmDialog(string message)
+    {
+        var dialog = new Window
+        {
+            Title = "Подтверждение",
+            Width = 300,
+            Height = 150,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            Content = new StackPanel
+            {
+                Margin = new Thickness(20),
+                Spacing = 20,
+                Children =
+                {
+                    new TextBlock { Text = message, TextWrapping = TextWrapping.Wrap },
+                    new StackPanel
+                    {
+                        Orientation = Orientation.Horizontal,
+                        Spacing = 10,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Children =
+                        {
+                            new Button { Content = "Да", Width = 80 },
+                            new Button { Content = "Нет", Width = 80 }
+                        }
+                    }
+                }
+            }
+        };
+
+        var result = false;
+        var buttons = ((StackPanel)((StackPanel)dialog.Content).Children[1]).Children;
     
+        ((Button)buttons[0]).Click += (s, e) => { result = true; dialog.Close(); };
+        ((Button)buttons[1]).Click += (s, e) => { result = false; dialog.Close(); };
+
+        await dialog.ShowDialog(TopLevel.GetTopLevel(this) as Window);
+        return result;
+    }
 }
 
 

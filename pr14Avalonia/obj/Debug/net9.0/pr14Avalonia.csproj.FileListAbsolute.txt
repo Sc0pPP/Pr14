@@ -245,3 +245,4 @@ C:\Users\Scop\RiderProjects\pr14Avalonia\pr14Avalonia\bin\Debug\net9.0\ColorText
 C:\Users\Scop\RiderProjects\pr14Avalonia\pr14Avalonia\bin\Debug\net9.0\Markdown.Avalonia.dll
 C:\Users\Scop\RiderProjects\pr14Avalonia\pr14Avalonia\bin\Debug\net9.0\MsBox.Avalonia.dll
 C:\Users\Scop\RiderProjects\pr14Avalonia\pr14Avalonia\bin\Debug\net9.0\MessageBox.Avalonia.dll
+C:\Users\Scop\RiderProjects\pr14Avalonia\pr14Avalonia\obj\Debug\net9.0\pr14Avalonia.sourcelink.json

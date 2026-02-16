@@ -40,7 +40,7 @@
                                                 <TextBlock Text="{Binding PerchaseDateTime,StringFormat={}{0}-Начало сеанса}" Margin="30"/>
                                                 <TextBlock Text="{Binding FinalPrice,StringFormat={}{0} руб.}" Margin="30"/>
                                                 <TextBlock Text="{Binding Status}" Margin="30"/>
-                                                <TextBlock x:Name="NameBlock" Margin="30"/>
+                                                <TextBlock Text="{Binding MoviesName}" Margin="30"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </StackPanel>
