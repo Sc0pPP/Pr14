@@ -27,15 +27,20 @@ public partial class EntrancePage : Page
 
     private void Button_Click(object? sender, RoutedEventArgs e)
     {
+        entrance(UserPassword,UserName);
+    }
+
+    void entrance(TextBox pasw,TextBox login)
+    {
         var mainWindow = (Application.Current.ApplicationLifetime
             as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
-        if (string.IsNullOrWhiteSpace(UserPassword.Text) | string.IsNullOrWhiteSpace(UserName.Text))
+        if (string.IsNullOrWhiteSpace(pasw.Text) | string.IsNullOrWhiteSpace(login.Text))
         {
             var dialog = new SimpleWindow("не все поля заполнены");
             dialog.ShowDialog(mainWindow);
             return;
         }
-        if (Users_bd.FirstOrDefault(u => u.Login == UserName.Text) == null)
+        if (Users_bd.FirstOrDefault(u => u.Login == login.Text) == null)
         {
            
             var dialoga = new SimpleWindow("логин занят");
@@ -44,6 +49,6 @@ public partial class EntrancePage : Page
 
         }
         AppState.CurentUser=Users_bd.FirstOrDefault(u=>u.Login==UserName.Text);    
-       NavigationService?.Navigate(new ProfilePage());
+        NavigationService?.Navigate(new ProfilePage());
     }
 }

@@ -21,7 +21,7 @@ public partial class ProfilePage : Page
 
     public class TicketView
     {
-        public int? Place { get; set; }  // <-- сделай nullable
+        public int? Place { get; set; }  
         public DateTime PerchaseDateTime { get; set; }
         public decimal FinalPrice { get; set; }
         public string Status { get; set; }

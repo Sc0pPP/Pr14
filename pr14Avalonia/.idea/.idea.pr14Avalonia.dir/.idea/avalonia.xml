@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="App.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/ChoiceSessionPage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/CurentFilmPage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/EntrancePage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/FirstPage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/ProfilePage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/RegistrationPage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/SecondPage.axaml" value="pr14Avalonia.csproj" />
+        <entry key="Pages/SimpleWindow.axaml" value="pr14Avalonia.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

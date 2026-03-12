@@ -20,9 +20,14 @@ public partial class RegistrationPage : Page
 
     private void Button_Click(object? sender, RoutedEventArgs e)
     {
+        registration(UserPassword,PasswordProv,UserName);
+    }
+
+    void registration(TextBox pasw,TextBox paswsec, TextBox login)
+    {
         var mainWindow = (Application.Current.ApplicationLifetime
             as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
-        if (string.IsNullOrWhiteSpace(UserPassword.Text) | string.IsNullOrWhiteSpace(PasswordProv.Text) | string.IsNullOrWhiteSpace(UserName.Text))
+        if (string.IsNullOrWhiteSpace(UserPassword.Text) | string.IsNullOrWhiteSpace(pasw.Text) | string.IsNullOrWhiteSpace(login.Text))
         {
             
         
@@ -30,7 +35,7 @@ public partial class RegistrationPage : Page
             dialog.ShowDialog(mainWindow);
             return;
         }
-        if (Users_bd.FirstOrDefault(u => u.Login == UserName.Text) != null)
+        if (Users_bd.FirstOrDefault(u => u.Login == login.Text) != null)
         {
            
             var dialoga = new SimpleWindow("логин занят");
@@ -38,7 +43,7 @@ public partial class RegistrationPage : Page
             return;
 
         }
-        if (UserPassword.Text != PasswordProv.Text)
+        if (pasw.Text != paswsec.Text)
         {
            
             var dialogaa = new SimpleWindow("пароли не совпадают");
@@ -48,8 +53,8 @@ public partial class RegistrationPage : Page
         }               
         User newUser = new User // создание нового пользователя
         {
-            Login = UserName.Text,
-            Password = UserPassword.Text,
+            Login = login.Text,
+            Password = pasw.Text,
         };
         AppState.CurentUser=newUser;
         Core.Context.Users.Add(newUser); // добавление пользователя в таблицу в БД
