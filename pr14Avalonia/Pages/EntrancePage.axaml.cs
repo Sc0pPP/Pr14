@@ -27,28 +27,29 @@ public partial class EntrancePage : Page
 
     private void Button_Click(object? sender, RoutedEventArgs e)
     {
-        entrance(UserPassword,UserName);
+        entrance(UserPassword.Text,UserName.Text);
     }
 
-    void entrance(TextBox pasw,TextBox login)
+    bool entrance(string pasw,string login)
     {
         var mainWindow = (Application.Current.ApplicationLifetime
             as IClassicDesktopStyleApplicationLifetime)?.MainWindow;
-        if (string.IsNullOrWhiteSpace(pasw.Text) | string.IsNullOrWhiteSpace(login.Text))
+        if (string.IsNullOrWhiteSpace(pasw) | string.IsNullOrWhiteSpace(login))
         {
             var dialog = new SimpleWindow("не все поля заполнены");
             dialog.ShowDialog(mainWindow);
-            return;
+            return false;
         }
-        if (Users_bd.FirstOrDefault(u => u.Login == login.Text) == null)
+        if (Users_bd.FirstOrDefault(u => u.Login == login) == null)
         {
            
             var dialoga = new SimpleWindow("логин занят");
             dialoga.ShowDialog(mainWindow);
-            return;
+            return false;
 
         }
         AppState.CurentUser=Users_bd.FirstOrDefault(u=>u.Login==UserName.Text);    
         NavigationService?.Navigate(new ProfilePage());
+        return true;
     }
 }
